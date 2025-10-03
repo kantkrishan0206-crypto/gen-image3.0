@@ -1,10 +1,8 @@
 # gen-image3.0
 a powerful, large-scale, multimodal model for Text-to-Image generation.
 <p align="center">
-  <img src=" https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.washingtonpost.com%2Ftechnology%2Finteractive%2F2022%2Faiimagegenerator%2F&psig=AOvVaw2dK9kBzpcLWBYCIZnd_Vn5&ust=1759587060396000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCZieKaiJADFQAAAAAdAAAAABAm" width="600"/>
+  <img src="https://via.placeholder.com/600x150.png?text=gen-image3.0" alt="gen-image3.0 Logo" width="600"/>
 </p>
-
-
 
 <h1 align="center">🎨 gen-image3.0</h1>
 <p align="center">
@@ -47,8 +45,123 @@ Due to its size, gen-image3.0 requires high-end hardware:
 2. **PyTorch:** 2.7.1 with CUDA 12.8  
 3. **Install Dependencies:**
 ```bash
-pip install torch==2.7.1 tor
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128
+pip install -r requirements.txt
+```
 
+4. **Optional Performance Optimizations:**
+```bash
 pip install flash-attn==2.8.3 --no-build-isolation
 pip install flashinfer-python
+```
 
+> ⚡ Tip: Ensure PyTorch CUDA version matches system CUDA. First inference with FlashInfer may be slower (~10 min) due to kernel compilation.
+
+---
+
+## 🚀 Usage
+
+### Quick Start with Transformers
+```python
+from transformers import AutoModelForCausalLM
+
+model_id = "./gen-image3"
+
+kwargs = dict(
+    attn_implementation="sdpa",    # "flash_attention_2" if installed
+    trust_remote_code=True,
+    torch_dtype="auto",
+    device_map="auto",
+    moe_impl="eager",              # "flashinfer" if installed
+)
+
+model = AutoModelForCausalLM.from_pretrained(model_id, **kwargs)
+model.load_tokenizer(model_id)
+
+prompt = "A brown and white dog is running on the grass"
+image = model.generate_image(prompt=prompt, stream=True)
+image.save("image.png")
+```
+
+---
+
+### Local Installation & Usage
+```bash
+git clone https://github.com/yourusername/gen-image3.0.git
+cd gen-image3.0
+# Download weights from HuggingFace or your storage
+# Run demo
+python3 run_image_gen.py --model-id ./gen-image3 --prompt "Your prompt here"
+```
+
+**Command-line arguments:**
+
+| Argument     | Description                              | Default    |
+| ------------ | ---------------------------------------- | ---------- |
+| --prompt     | Input text prompt                        | (Required) |
+| --model-id   | Model path                               | (Required) |
+| --attn-impl  | Attention type: sdpa / flash_attention_2 | sdpa       |
+| --moe-impl   | MoE type: eager / flashinfer             | eager      |
+| --image-size | Image resolution                         | auto       |
+| --save       | Output image path                        | image.png  |
+
+---
+
+### 🎨 Interactive Gradio Demo
+
+1. Install Gradio:
+```bash
+pip install gradio>=4.21.0
+```
+2. Configure Environment:
+```bash
+export MODEL_ID="path/to/your/model"
+export GPUS="0,1,2,3"
+export HOST="0.0.0.0"
+export PORT="443"
+```
+3. Launch Demo:
+```bash
+sh run_app.sh --moe-impl flashinfer --attn-impl flash_attention_2
+```
+4. Open Web Interface: `http://localhost:443`
+
+---
+
+## 📝 Prompt Guide
+* **Manual Prompts:** Describe main subject first, then environment, style, perspective, lighting, and technical parameters.  
+* **System Prompts:** Prebuilt templates can automatically enhance user inputs for better results.
+
+---
+
+## 📊 Evaluation
+* **Machine Evaluation (SSAE):** Scores images against text prompts using semantic alignment metrics.  
+* **Human Evaluation (GSB):** Professionals rate image quality using Good/Same/Bad comparison method.
+
+---
+
+## 📚 Citation
+If you use **gen-image3.0** in research, please cite:
+```bibtex
+@article{your2025genimage,
+  title={gen-image3.0: Large-Scale Multimodal Text-to-Image Generation},
+  author={Your Name et al.},
+  journal={arXiv preprint arXiv:2500.00000},
+  year={2025}
+}
+```
+
+---
+
+## 🙏 Acknowledgements
+We thank the open-source community for invaluable contributions:
+
+* 🤗 Transformers  
+* 🎨 Diffusers  
+* 🌐 HuggingFace  
+* ⚡ FlashAttention  
+* 🚀 FlashInfer  
+
+---
+
+<p align="center">⭐ If you like this project, give it a star!</p>
