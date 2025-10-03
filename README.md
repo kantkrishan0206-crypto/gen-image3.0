@@ -53,5 +53,27 @@ pip install flash-attn==2.8.3 --no-build-isolation
 pip install flashinfer-python
 
 
+## 🚀 Usage:
+from transformers import AutoModelForCausalLM
+
+model_id = "./gen-image3"
+
+kwargs = dict(
+    attn_implementation="sdpa",    # "flash_attention_2" if installed
+    trust_remote_code=True,
+    torch_dtype="auto",
+    device_map="auto",
+    moe_impl="eager",              # "flashinfer" if installed
+)
+
+model = AutoModelForCausalLM.from_pretrained(model_id, **kwargs)
+model.load_tokenizer(model_id)
+
+prompt = "A brown and white dog is running on the grass"
+image = model.generate_image(prompt=prompt, stream=True)
+image.save("image.png")
+
+
+
 chvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128
 pip install -r requirements.txt
