@@ -1,7 +1,7 @@
 # gen-image3.0
 a powerful, large-scale, multimodal model for Text-to-Image generation.
 <p align="center">
-  <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjS5VjQiO13I&psig=AOvVaw2dK9kBzpcLWBYCIZnd_Vn5&ust=1759587060396000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCZieKaiJADFQAAAAAdAAAAABAE" width="600"/>
+  <img src="https://via.placeholder.com/600x150.png?text=gen-image3.0" width="600"/>
 </p>
 
 
