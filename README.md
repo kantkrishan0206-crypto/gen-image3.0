@@ -47,5 +47,11 @@ Due to its size, gen-image3.0 requires high-end hardware:
 2. **PyTorch:** 2.7.1 with CUDA 12.8  
 3. **Install Dependencies:**
 ```bash
-pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128
+pip install torch==2.7.1 tor
+
+pip install flash-attn==2.8.3 --no-build-isolation
+pip install flashinfer-python
+
+
+chvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128
 pip install -r requirements.txt
