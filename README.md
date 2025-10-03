@@ -12,7 +12,7 @@ Here’s a clean, GitHub-ready README for your **gen-image3.0** project, structu
 </p>
 
 <h1 align="center">🎨 gen-image3.0</h1>
-<p align="center">
+<p align="center"> 
   A large-scale, multimodal Text-to-Image generation model — fully open-source and commercial-grade.
 </p>
 
