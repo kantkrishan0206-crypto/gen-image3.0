@@ -87,7 +87,7 @@ image.save("image.png")
 
 ### Local Installation & Usage
 ```bash
-git clone https://github.com/yourusername/gen-image3.0.git
+git clone https://github.com/kantkrishan0206-crypto/gen-image3.0.git
 cd gen-image3.0
 # Download weights from HuggingFace or your storage
 # Run demo
@@ -139,17 +139,6 @@ sh run_app.sh --moe-impl flashinfer --attn-impl flash_attention_2
 * **Human Evaluation (GSB):** Professionals rate image quality using Good/Same/Bad comparison method.
 
 ---
-
-## 📚 Citation
-If you use **gen-image3.0** in research, please cite:
-```bibtex
-@article{your2025genimage,
-  title={gen-image3.0: Large-Scale Multimodal Text-to-Image Generation},
-  author={Your Name et al.},
-  journal={arXiv preprint arXiv:2500.00000},
-  year={2025}
-}
-```
 
 ---
 
