@@ -1,7 +1,7 @@
 # gen-image3.0
 a powerful, large-scale, multimodal model for Text-to-Image generation.
 <p align="center">
-  <img src="https://via.placeholder.com/600x150.png?text=gen-image3.0" alt="gen-image3.0 Logo" width="600"/>
+  <img width="2300" height="1533" alt="image" src="https://github.com/user-attachments/assets/892d7b73-8fdc-4aea-a6da-39f8ba4093a6" />
 </p>
 
 <h1 align="center">🎨 gen-image3.0</h1>
